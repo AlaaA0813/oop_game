@@ -130,6 +130,49 @@ class LedgeCavern(Scene):
             print("Try something else.")
             return 'ledge'
 
+class OctopusRoom(Scene):
+    def enter(self):
+        print(dedent("""
+            As you raise your torch you notice the level of water is knee high, flowing heavily to the left and then pouring over a deep waterfall.  To the far right of the room is a rusted metal ladder leading into a dark cellar, perched over the source of water.  If you go straight across the flowing water, there is a small dark crawl space.  Either way, you must enter the water.
+
+            Will you go left, straight, or right?
+            """))
+
+        choice == input('I will go:\n')
+
+        if choice == lower('LEFT') or choice == lower('L'):
+            print(dedent("""
+                As you lean over the lip of the waterfall, you notice movement in the darkness. A tentacle whips out of nowhere, latching on to the top of your head and pulling you down into the depths.
+                """))
+            return 'death'
+
+        elif choice == lower('STRAIGHT') or choice == lower('FORWARD') or choice == lower('ACROSS'):
+            print(dedent("""
+                You trudge your way across the flowing water and as you peer into the crawl space, two mutant cavemen snatch you, dragging you into the shadows where they feast on your soul. And you.
+                """))
+            return 'death'
+
+        elif choice == lower('RIGHT') or choice == lower('R'):
+            print(dedent("""
+                As you make your way to the ladder, against the current, you hear another screech roar through the caverns.  It sounds close.  A giant octopus emerges from the depths of the waterfall and it looks hangry af.  His tentacles are flailing every which way.  The bohemath octopus leaves you with no option but to attack.  You notice a large glowing crystal on the center of it's round head.  It seems to be the source of it's power..
+
+                What will you do?
+                """))
+
+            choice == input('I will:\n')
+
+        if choice == lower('ATTACK') or choice == lower('STAB') or choice == lower('KILL'):
+                print(dedent("""
+                    You hurdle your spear at the giant octopus, puncturing the crystal,cracking it..  As the octopus succumbs to a fit of rage, the crystal explodes, turning the giant octopus into a smelly pile of mush.
+                    """))
+                return 'exitcarvern'
+
+        else:
+            print(dedent("""
+                The massive octopus effortlessly latches on to you with one of it's suction cups and plops you into it's beak.
+                """))
+            return 'death'
+
 class CaveSystem(object):
     scenes = {
     'bridges': WoodBridgeChamber(),
