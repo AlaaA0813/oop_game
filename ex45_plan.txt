@@ -12,7 +12,7 @@ Caverns:
           - As you hesitantly cross the rotting bridge, you step on a moldy plank, snapping the bridge in half and falling deep into darkness. You died.
           - end game.  Run starting chamber.
         - if they go right:
-          - - As you take your last step off of the bridge, the ropes underneath you snap.  You made it to the other side though.
+          - As you take your last step off of the bridge, the ropes underneath you snap.  You made it to the other side though.
           - run MutantRoom
 
   - MutantRoom:

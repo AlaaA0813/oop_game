@@ -22,12 +22,12 @@ class Death(Scene):
     def enter(self):
         pass
 
-class WoodBridgeChamber(object):
+class WoodBridgeChamber(Scene):
 
     def enter(self):
         pass
 
-class MutantRoom(object):
+class MutantRoom(Scene):
 
     def caveman(self):
         pass
@@ -35,17 +35,17 @@ class MutantRoom(object):
     def enter(self):
         pass
 
-class LedgeCavern(object):
+class LedgeCavern(Scene):
 
     def enter(self):
         pass
 
-class OctopusRoom(object):
+class OctopusRoom(Scene):
 
     def enter(self):
         pass
 
-class ExitCavern(object):
+class ExitCavern(Scene):
 
     def enter(self):
         pass
