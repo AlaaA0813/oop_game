@@ -61,7 +61,6 @@ class CaveSystem(object):
     def opening_scene(self):
         pass
 
-
     chambers = {
     'bridges': WoodBridgeChamber(),
     'mutant': MutantRoom(),
