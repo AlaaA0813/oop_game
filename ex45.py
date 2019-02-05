@@ -13,7 +13,7 @@ class Scene(object):
         print("Subclass it and implement enter()")
         exit(1) # end loop
 
-class Engine(object):
+class Progross(object):
     def __init__(self, scene_map):
         self.scene_map = scene_map
 
@@ -23,4 +23,4 @@ class Engine(object):
         while current_scene != last_Scene:
             next_scene_name = current_scene.enter() # make the next_scene be the current_scene
             current_scene = self.scene_map.next_scene(next_scene_name) # make current_scene the next_scene_name
-        current_scene.enter() # print out the map
+        current_scene.enter() # print out the scene
