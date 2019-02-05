@@ -20,7 +20,7 @@ class Progress(object):
 
     def play(self):
         current_scene = self.scene_map.opening_scene() # current_scene is also the opening_scene
-        last_scene = self.scene_map.next_scene('finished') # when we call 'finished', the last_scene gets ranself.
+        last_scene = self.scene_map.next_scene('finished') # when we call 'finished', the last_scene gets ran.
         while current_scene != last_Scene:
             next_scene_name = current_scene.enter() # make the next_scene be the current_scene
             current_scene = self.scene_map.next_scene(next_scene_name) # make current_scene the next_scene_name
@@ -97,6 +97,38 @@ class MutantRoom(Scene):
             else:
                 print("Try something else.")
                 return 'mutant'
+
+class LedgeCavern(Scene):
+    def enter(self):
+        print(dedent("""
+            As you maneuver your way through the passage you discover that it leads to a steep ledge.  The drop is dangerously high and at the bottom are dark waters.  On the other side is another ledge leading to another room.  The cave rumbles again.  You see a rope tied to a stalactite hanging on your end of the ledge. You can swing on the rope to the other side, jump across, or dive into the black water.
+
+            Will you swing, jump, or dive?
+            """))
+
+        choice == input('I will:\n')
+
+        if choice == lower('SWING'):
+            print(dedent("""
+                The rope snaps and you plummet into the dark waters.  A large tentacle pulls you deeper, your spear having no affect on the creature.
+                """))
+            return 'death'
+
+        elif choice == lower('DIVE'):
+            print(dedent("""
+                A large tentacle pulls you deeper, your spear having no affect on the creature.
+                """))
+            return 'death'
+
+        elif choice == lower('JUMP'):
+            print(dedent("""
+                You give yourself a running start and long jump across the gap barely making it to the other side.  Phew.
+                """))
+            return 'octopus'
+
+        else:
+            print("Try something else.")
+            return 'ledge'
 
 class CaveSystem(object):
     scenes = {
