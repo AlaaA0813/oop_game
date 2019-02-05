@@ -1,11 +1,33 @@
+# Learn Python the Hard Way - Zed Shaw
+    # Exercise 43, pages 164 - 177
+        # Using class skeleton and code to build my game.
+
 # Cave Escape classes/functions skeletons
 
-class StartingCavern(object):
+class Scene(object):
 
     def enter(self):
         pass
 
-class Cavern2(object):
+class Progress(object):
+
+    def __init__(self, scene_map):
+        pass
+
+    def play(self):
+        pass
+
+class Death(Scene):
+
+    def enter(self):
+        pass
+
+class WoodBridgeChamber(object):
+
+    def enter(self):
+        pass
+
+class MutantRoom(object):
 
     def caveman(self):
         pass
@@ -13,12 +35,12 @@ class Cavern2(object):
     def enter(self):
         pass
 
-class Cavern3(object):
+class LedgeCavern(object):
 
     def enter(self):
         pass
 
-class Cavern4(object):
+class OctopusRoom(object):
 
     def enter(self):
         pass
@@ -28,17 +50,22 @@ class ExitCavern(object):
     def enter(self):
         pass
 
-class Death(object):
+class CaveSystem(object):
 
-    def enter(self):
+    def __init__(self, start_game):
         pass
 
-class AllCaverns(object):
+    def next_scene(self, scene_name):
+        pass
+
+    def opening_scene(self):
+        pass
+
 
     chambers = {
-    'start_cav': StartingCavern(),
-    'cav_2': Cavern2(),
-    'cav_3': Cavern3(),
-    'cav_4': Cavern4(),
-    'exit_cav': ExitCavern()
+    'bridges': WoodBridgeChamber(),
+    'mutant': MutantRoom(),
+    'ledge': LedgeCavern(),
+    'octopus': OctopusRoom(),
+    'exitcavern': ExitCavern()
     }

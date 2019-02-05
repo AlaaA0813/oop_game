@@ -1,0 +1,69 @@
+Cave Escape
+
+- global mutant_caveman_alive ????
+Caverns:
+  - WoodBridgeChamber:
+    - You slowly awaken only to find yourself hanging upside, tied up at your feet.  A torch dimly lights the cavern floors, littered with bones, skulls, a few makeshift wooden tables, and broken chairs.  You're in a cave and the surface is no where in sight.
+    - You notice a rusty spear just out of arms reach wedged between two rocks, so you swing yourself in range and cut your legs free.  A terrifying screech rips through the caverns as the earth shakes around you.  It's probably best to keep moving.
+    - You grab the torch and follow a narrow tunnel that splits off into two wooden rope bridges.  One heads LEFT, the other heads RIGHT.
+    - Which way will you go? LEFT OR RIGHT
+      - User input > " "
+        - if they go left:
+          - As you hesitantly cross the rotting bridge, you step on a moldy plank, snapping the bridge in half and falling deep into darkness. You died.
+          - end game.  Run starting chamber.
+        - if they go right:
+          - - As you take your last step off of the bridge, the ropes underneath you snap.  You made it to the other side though.
+          - run MutantRoom
+
+  - MutantRoom:
+          - global mutant_caveman_alive ????
+          - You get to your feet, raise your torch and notice an enraged mutant caveman.  Behind him is a PASSAGEWAY you can ENTER to another cavern.
+          - What will you do? ATTACK THE MUTANT OR ENTER THE CAVE
+            - User input > " "
+              - if you try to enter the passageway while mutant is alive: or print("The mutant isn't going to let you through.")
+                - The mutant caveman pounces on top of you and gulps you down in one bite.  You died.
+                - End game.
+              - if you KILL/STAB/ATTACK the mutant:
+                - The mutant caveman begins to charge you and leaps in the air, but before he can reach you, you plunge the spear into it's chest, killing him instantly.
+                - mutant_caveman_alive = false
+                - enter passage way to LedgeCavern
+
+  - LedgeCavern:
+        -  As you maneuver your way through the passage you discover that it leads to a steep ledge.  The drop is dangerously high and at the bottom are dark waters.  On the other side is another ledge leading to another room.  The cave rumbles again.  You see a rope tied to a stalactite hanging on your end of the ledge. You can SWING on the rope to the other side, JUMP across, or DIVE into the black water.
+        - What will you do?  input> " "
+          - if SWING:
+            - the rope snaps and you plummet into the dark waters.  A large tentacle pulls you deeper, your spear having no affect on the creature.  You died.
+            - end game
+          - if DIVE:
+            - A large tentacle pulls you deeper, your spear having no affect on the creature.  You died.
+            - end game
+          - if JUMP:
+            - You give yourself a running start and long jump across the gap barely making it to the other side.  Phew.
+        - enter OctopusRoom.
+
+  - OctopusRoom:
+        - As you raise your torch you notice the level of water is knee high, flowing heavily in the LEFT direction and then pouring over an underground waterfall.  To the far RIGHT of the room is a rusted metal ladder leading into a dark cellar.  If you go STRAIGHT, across the flowing water is a small crawl space.  Either way, you must enter the water.
+          if LEFT:
+            - As you lean over the lip of the waterfall, you lose your footing and tumble off the edge into the darkness.  You died.
+            - end game
+          if STRAIGHT:
+            - You trudge your way across the flowing water and as you peer into the crawl space, two mutant cavemen snatch you, dragging you into thew shadows where they eat you.  You died.
+            - end game
+          if RIGHT:
+            - As you make your way to the ladder against the current you hear another screech roar through the caverns.  It sounds close.  A giant octopus emerges from the depths of the waterfall and it looks hangry.  His tentacles are flailing every which way.  In between his two eyes is a large glowing crystal that seems to be the source of it's power..
+              - What will you do? input > " "
+                - ATTACK/STAB/KILL/THROW:
+                  - The spear punctures the crystal, cracking it..  As the octopus succumbs to a fit of rage, the crystal explodes, turning the giant octopus into a smelly pile of mush.
+                  - run ExitCavern
+                - else any other action:
+                  - The massive octopus latches on to you with one of it's suction cups and plops you into it's beak.  You died.
+                  - end game
+
+  - ExitCavern:
+        - When you reach the top of the ladder, you see a hanging rope underneath a small beam of light.  The rope leads to the surface if you CLIMB!
+          - what will you do?
+            - If CLIMB:
+              - You made it to the surface! The coast is close by with an abandoned sailboat tied to a deck.  Time to get home.  You escaped the cave! You win!
+            - else any other input:
+              - After some thought, you decide that the surface isn't right for you anymore.  You will live amongst the mutant cavemen as one of their gross clansmen..You didn't escape the cave.  You lose.
+              - end game.
