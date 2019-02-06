@@ -164,11 +164,19 @@ class OctopusRoom(Scene):
                     """))
                 return 'exitcavern'
 
-            else:
+            elif choice == 'climb' or choice == 'up':
                 print(dedent("""
-                    The massive octopus effortlessly latches on to you with one of it's suction cups and plops you into it's beak. You get eaten alive!  Should've drank your milk.
+                    The massive octopus effortlessly latches on to you with one of it's suction cups and plops you into it's beak. You get eaten alive!
                     """))
                 return 'death'
+
+            else:
+                print("Try something else.")
+                return 'octopus'
+
+        else:
+            print("Try something else.")
+            return 'octopus'
 
 class ExitCavern(Scene):
     def enter(self):
