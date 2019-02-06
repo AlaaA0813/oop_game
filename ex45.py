@@ -28,10 +28,10 @@ class Progress(object):
 
 class Death(Scene):
     trash = [
-    "You died. Game Over",
-    "You got got.",
+    "You lost. Game Over",
+    "You got got. The game is over.",
     "You got tooken.",
-    "You died. You're bad.",
+    "You're bad. Game over.",
     "Looks like you're not escaping.  Game over."
     ] # when you die, one of these strings will appear
 
@@ -55,7 +55,7 @@ class WoodBridgeChamber(Scene):
 
         if choice == lower('LEFT') or choice == lower('L'): # if the user inputs LEFT or L, python will lowercase both and return the following string..
             print(dedent("""
-                As you hesitantly cross the rotting bridge, you step on a moldy plank, snapping the bridge in half and falling deep into darkness.
+                As you hesitantly cross the rotting bridge, you step on a moldy plank, snapping the bridge in half and falling to your death, deep into the darkness.
                 """))
             return 'death'
 
@@ -83,7 +83,7 @@ class MutantRoom(Scene):
         while mutant_alive == True:
             if choice == lower('ENTER') or choice == lower('ENTER PASSAGEWAY'):
                 print(dedent("""
-                    The mutant caveman pounces on top of you and gulps you down in one bite.
+                    The mutant caveman pounces on top of you and gulps you down in one bite. You're definitely not alive.
                     """))
                 return 'death'
 
@@ -110,13 +110,13 @@ class LedgeCavern(Scene):
 
         if choice == lower('SWING'):
             print(dedent("""
-                The rope snaps and you plummet into the dark waters.  A large tentacle pulls you deeper, your spear having no affect on the creature.
+                The rope snaps and you plummet into the dark waters.  A large tentacle pulls you deeper and deaper, your spear having no affect on the creature. You drown before being eaten.
                 """))
             return 'death'
 
         elif choice == lower('DIVE'):
             print(dedent("""
-                A large tentacle pulls you deeper, your spear having no affect on the creature.
+                A large tentacle pulls you deeper, your spear having no affect on the creature. You drown before being eaten.
                 """))
             return 'death'
 
@@ -142,7 +142,7 @@ class OctopusRoom(Scene):
 
         if choice == lower('LEFT') or choice == lower('L'):
             print(dedent("""
-                As you lean over the lip of the waterfall, you notice movement in the darkness. A tentacle whips out of nowhere, latching on to the top of your head and pulling you down into the depths.
+                As you lean over the lip of the waterfall, you notice movement in the darkness. A tentacle whips out of nowhere, latching on to the top of your head and pulling you down into the depths. You died.
                 """))
             return 'death'
 
@@ -161,17 +161,40 @@ class OctopusRoom(Scene):
 
             choice == input('I will:\n')
 
-        if choice == lower('ATTACK') or choice == lower('STAB') or choice == lower('KILL'):
+            if choice == lower('ATTACK') or choice == lower('STAB') or choice == lower('KILL'):
                 print(dedent("""
                     You hurdle your spear at the giant octopus, puncturing the crystal,cracking it..  As the octopus succumbs to a fit of rage, the crystal explodes, turning the giant octopus into a smelly pile of mush.
                     """))
-                return 'exitcarvern'
+                return 'exitcavern'
 
+            else:
+                print(dedent("""
+                    The massive octopus effortlessly latches on to you with one of it's suction cups and plops you into it's beak. You get eaten alive!  Should've drank your milk.
+                    """))
+                return 'death'
+
+class ExitCavern(Scene):
+    def enter(self):
+        print(dedent("""
+            When you reach the top of the ladder, you see a hanging rope underneath a small beam of light.  The rope leads to the surface if you climb!
+
+            What will you do?
+            """))
+
+        choice == input('I will:\n')
+
+        if choice == lower('CLIMB') or choice == lower('UP') or choice == lower('GO UP'):
+            print(dedent("""
+                You made it to the surface! The coast is close by with an abandoned sailboat tied to a deck.  Time to get home.  You escaped the cave! Great jerb! You win!
+                """))
+            return 'finished'
         else:
             print(dedent("""
-                The massive octopus effortlessly latches on to you with one of it's suction cups and plops you into it's beak.
+                After some thought, you decide that the surface isn't right for you anymore.  You will live amongst the mutant cavemen as one of their gross clansmen..You didn't escape the cave.  You lose.
                 """))
             return 'death'
+
+
 
 class CaveSystem(object):
     scenes = {
