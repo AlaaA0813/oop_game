@@ -185,7 +185,7 @@ class ExitCavern(Scene):
 
         if choice == lower('CLIMB') or choice == lower('UP') or choice == lower('GO UP'):
             print(dedent("""
-                You made it to the surface! The coast is close by with an abandoned sailboat tied to a deck.  Time to get home.  You escaped the cave! Great jerb! You win!
+                You made it to the surface! The coast is close by with an abandoned sailboat tied to a deck.  Time to get home.
                 """))
             return 'finished'
         else:
@@ -194,7 +194,10 @@ class ExitCavern(Scene):
                 """))
             return 'death'
 
-
+class Finished(Scene):
+    def enter(self):
+        print("You escaped the cave! Great jerb! You win!")
+        return 'finished' # return finished scene when 'finished' is called
 
 class CaveSystem(object):
     scenes = {
