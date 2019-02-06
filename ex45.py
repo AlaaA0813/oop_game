@@ -51,15 +51,15 @@ class WoodBridgeChamber(Scene):
             Will you go left or right?
             """))
 
-        choice = input("I will go:\n")
+        choice = input("I will go:\n") # the user's choice is equal to their input.  their input will go on a new line and be preceded by "I will go:"
 
-        if choice == 'left' or choice == 'l': # if the user inputs LEFT or L, python will lowercase both and return the following string..
+        if choice == 'left' or choice == 'l': # if the user inputs left or l, python will return the following string..
             print(dedent("""
                 As you hesitantly cross the rotting bridge, you step on a moldy plank, snapping the bridge in half and falling to your death, deep into the darkness.
                 """))
             return 'death'
 
-        elif choice == 'right' or choice == 'r': # else if the user inputs RIGHT or L, python will lowercase both and return the following string..
+        elif choice == 'right' or choice == 'r': # else if the user inputs right or r, python will return the following string..
             print(dedent("""
                 As you take your last step off of the bridge, the ropes underneath you snap.  It doesn't matter because you made it to the other side. Nice. You dust yourself off.
                 """))
