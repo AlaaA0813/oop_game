@@ -160,7 +160,7 @@ class OctopusRoom(Scene):
 
             if choice == 'attack' or choice == 'stab' or choice == 'kill':
                 print(dedent("""
-                    You hurdle your spear at the giant octopus, puncturing the crystal,cracking it..  As the octopus succumbs to a fit of rage, the crystal explodes, turning the giant octopus into a smelly pile of mush.
+                    You hurdle your spear at the giant octopus, puncturing the crystal, cracking it..  As the octopus succumbs to a fit of rage, the crystal explodes, turning the giant octopus into a smelly pile of mush.
                     """))
                 return 'exitcavern'
 
@@ -205,7 +205,7 @@ class CaveSystem(object):
     'exitcavern': ExitCavern(),
     'death': Death(),
     'finished': Finished()
-    } # store each scene by name in a dictionary.  use map.scenes to frefer to a name
+    } # store each scene by name in a dictionary.  use CaveSystem.scenes to frefer to a name
 
     def __init__(self, start_scene):
         self.start_scene = start_scene # referencing one of the scenes from lines 76-80
