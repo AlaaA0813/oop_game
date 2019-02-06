@@ -6,7 +6,7 @@
 
 from sys import exit # will close an infinity loop
 from textwrap import dedent # remove indentation from strings
-
+from random import randint # we want the computer to pick a random number in a given range
 
 class Scene(object):
     def enter(self):
@@ -21,7 +21,7 @@ class Progress(object):
     def play(self):
         current_scene = self.scene_map.opening_scene() # current_scene is also the opening_scene
         last_scene = self.scene_map.next_scene('finished') # when we call 'finished', the last_scene gets ran.
-        while current_scene != last_Scene:
+        while current_scene != last_scene:
             next_scene_name = current_scene.enter() # make the next_scene be the current_scene
             current_scene = self.scene_map.next_scene(next_scene_name) # make current_scene the next_scene_name
         current_scene.enter() # print out the scene
@@ -53,13 +53,13 @@ class WoodBridgeChamber(Scene):
 
         choice = input("I will go:\n")
 
-        if choice == lower('LEFT') or choice == lower('L'): # if the user inputs LEFT or L, python will lowercase both and return the following string..
+        if choice == 'left' or choice == 'l': # if the user inputs LEFT or L, python will lowercase both and return the following string..
             print(dedent("""
                 As you hesitantly cross the rotting bridge, you step on a moldy plank, snapping the bridge in half and falling to your death, deep into the darkness.
                 """))
             return 'death'
 
-        elif choice == lower('RIGHT') or choice == lower('R'): # else if the user inputs RIGHT or L, python will lowercase both and return the following string..
+        elif choice == 'right' or choice == 'r': # else if the user inputs RIGHT or L, python will lowercase both and return the following string..
             print(dedent("""
                 As you take your last step off of the bridge, the ropes underneath you snap.  It doesn't matter because you made it to the other side. Nice. You dust yourself off.
                 """))
@@ -70,33 +70,30 @@ class WoodBridgeChamber(Scene):
             return 'bridges'
 
 class MutantRoom(Scene):
-    mutant_alive = True
     def enter(self):
         print(dedent("""
             You get to your feet, raise your torch and notice an enraged mutant caveman.  Behind him is a passageway you can enter to another cavern. Your only way into the passage is through the mutant caveman..
 
-            Will you attack the mutant or enter the passsageway?
+            Will you attack the mutant or enter the passageway?
             """))
 
         choice = input('I will:\n')
 
-        while mutant_alive == True:
-            if choice == lower('ENTER') or choice == lower('ENTER PASSAGEWAY'):
-                print(dedent("""
-                    The mutant caveman pounces on top of you and gulps you down in one bite. You're definitely not alive.
-                    """))
-                return 'death'
+        if choice == 'enter' or choice == 'enter passageway':
+            print(dedent("""
+                The mutant caveman pounces on top of you and gulps you down in one bite. You're definitely not alive.
+                """))
+            return 'death'
 
-            elif choice == lower('ATTACK') or choice == lower('STAB') or choice == lower('KILL'):
-                print(dedent("""
-                    The mutant caveman begins to charge you and leaps in the air, but before he can reach you, you plunge the spear into it's chest, killing it instantly.
-                    """))
-                mutant_alive == False
-                return 'ledge'
+        elif choice == 'attack' or choice == 'stab' or choice == 'kill':
+            print(dedent("""
+                The mutant caveman begins to charge you and leaps in the air, but before he can reach you, you plunge the spear into it's chest, killing it instantly.
+                """))
+            return 'ledge'
 
-            else:
-                print("Try something else.")
-                return 'mutant'
+        else:
+            print("Try something else.")
+            return 'mutant'
 
 class LedgeCavern(Scene):
     def enter(self):
@@ -106,21 +103,21 @@ class LedgeCavern(Scene):
             Will you swing, jump, or dive?
             """))
 
-        choice == input('I will:\n')
+        choice = input("I will:\n")
 
-        if choice == lower('SWING'):
+        if choice == 'swing':
             print(dedent("""
                 The rope snaps and you plummet into the dark waters.  A large tentacle pulls you deeper and deaper, your spear having no affect on the creature. You drown before being eaten.
                 """))
             return 'death'
 
-        elif choice == lower('DIVE'):
+        elif choice == 'dive':
             print(dedent("""
                 A large tentacle pulls you deeper, your spear having no affect on the creature. You drown before being eaten.
                 """))
             return 'death'
 
-        elif choice == lower('JUMP'):
+        elif choice == 'jump':
             print(dedent("""
                 You give yourself a running start and long jump across the gap barely making it to the other side.  Phew.
                 """))
@@ -138,30 +135,30 @@ class OctopusRoom(Scene):
             Will you go left, straight, or right?
             """))
 
-        choice == input('I will go:\n')
+        choice = input('I will go:\n')
 
-        if choice == lower('LEFT') or choice == lower('L'):
+        if choice == 'left' or choice == 'l':
             print(dedent("""
                 As you lean over the lip of the waterfall, you notice movement in the darkness. A tentacle whips out of nowhere, latching on to the top of your head and pulling you down into the depths. You died.
                 """))
             return 'death'
 
-        elif choice == lower('STRAIGHT') or choice == lower('FORWARD') or choice == lower('ACROSS'):
+        elif choice == 'straight' or choice == 'forward' or choice == 'across':
             print(dedent("""
                 You trudge your way across the flowing water and as you peer into the crawl space, two mutant cavemen snatch you, dragging you into the shadows where they feast on your soul. And you.
                 """))
             return 'death'
 
-        elif choice == lower('RIGHT') or choice == lower('R'):
+        elif choice == 'right' or choice == 'r':
             print(dedent("""
                 As you make your way to the ladder, against the current, you hear another screech roar through the caverns.  It sounds close.  A giant octopus emerges from the depths of the waterfall and it looks hangry af.  His tentacles are flailing every which way.  The bohemath octopus leaves you with no option but to attack.  You notice a large glowing crystal on the center of it's round head.  It seems to be the source of it's power..
 
                 What will you do?
                 """))
 
-            choice == input('I will:\n')
+            choice = input('I will:\n')
 
-            if choice == lower('ATTACK') or choice == lower('STAB') or choice == lower('KILL'):
+            if choice == 'attack' or choice == 'stab' or choice == 'kill':
                 print(dedent("""
                     You hurdle your spear at the giant octopus, puncturing the crystal,cracking it..  As the octopus succumbs to a fit of rage, the crystal explodes, turning the giant octopus into a smelly pile of mush.
                     """))
@@ -181,9 +178,9 @@ class ExitCavern(Scene):
             What will you do?
             """))
 
-        choice == input('I will:\n')
+        choice = input('I will:\n')
 
-        if choice == lower('CLIMB') or choice == lower('UP') or choice == lower('GO UP'):
+        if choice == 'climb' or choice == 'up' or choice == 'go up':
             print(dedent("""
                 You made it to the surface! The coast is close by with an abandoned sailboat tied to a deck.  Time to get home.
                 """))
@@ -206,14 +203,15 @@ class CaveSystem(object):
     'ledge': LedgeCavern(),
     'octopus': OctopusRoom(),
     'exitcavern': ExitCavern(),
-    'death': Death()
+    'death': Death(),
+    'finished': Finished()
     } # store each scene by name in a dictionary.  use map.scenes to frefer to a name
 
-    def __init__(self, start_game):
+    def __init__(self, start_scene):
         self.start_scene = start_scene # referencing one of the scenes from lines 76-80
 
     def next_scene(self, scene_name):
-        val = Map.scenes.get(scene_name)
+        val = CaveSystem.scenes.get(scene_name)
         return val # get the scene from the dictionary and return that value(val) which is the chosen scene
 
     def opening_scene(self):
